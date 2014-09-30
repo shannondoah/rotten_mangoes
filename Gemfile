@@ -39,3 +39,6 @@ gem 'bcrypt', '~> 3.1.5'
 # gem 'debugger', group: [:development, :test]
 
 gem 'pry'
+
+gem 'carrierwave'
+gem 'rmagick'
