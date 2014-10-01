@@ -2,6 +2,9 @@ class Movie < ActiveRecord::Base
   
   has_many :reviews
 
+  scope :director, ->(name) { where("director like ?", "%#{name}%") }
+  scope :title, ->(name) {where("title like ?", "%#{name}%")}
+
   mount_uploader :poster, PosterUploader
 
   validates :title,
@@ -27,6 +30,28 @@ class Movie < ActiveRecord::Base
   def review_average
     reviews.sum(:rating_out_of_ten)/reviews.size unless reviews.size < 1 
   end
+
+  def self.duration(runtime)
+    case runtime
+    when "Under 90 Minutes"
+      self.where("runtime_in_minutes < ?", 90)
+    when "Over 120 Minutes"
+      self.where("runtime_in_minutes > ?", 120)
+    when "Between 90 and 120 Minutes"
+      self.where("runtime_in_minutes >= ? AND runtime_in_minutes <= ? ", 90, 120)
+    else
+      self.all
+    end
+  end
+
+  def self.search(search)
+    if search
+      self.director(search[:director]).title(search[:title]).duration(search[:runtime_in_minutes].to_s)
+    else
+      self.all
+    end
+  end
+
 
   protected
 
