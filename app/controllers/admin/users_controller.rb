@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_filter :admin_only
 
   def index
-    @users = User.all.page(params[:page]).per(1)
+    @users = User.all.page(params[:page]).per(5)
   end
 
   def show
@@ -40,6 +40,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    UserMailer.goodbye_email(@user).deliver
     @user.destroy
     redirect_to admin_users_path, notice: "This user has been deleted."
   end
