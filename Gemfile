@@ -42,3 +42,4 @@ gem 'pry'
 
 gem 'carrierwave'
 gem 'rmagick'
+gem 'kaminari'

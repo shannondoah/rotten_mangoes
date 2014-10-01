@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def admin
     @admin = User.find(1)
-    @current_user == @admin
+    User.find(session[:user_id]) == @admin
   end
 
   helper_method :current_user
