@@ -1,15 +1,13 @@
-<h1>All Users</h1> <%= link_to "<< Back to all movies", movies_path %><br/>
+<h1>All Users</h1> 
+<%= link_to "<< Back to all movies", movies_path %><br/>
 
 <hr>
-<h3><%= link_to ":: Create a new user ::", new_admin_user_path %></h3>
+  <h3><%= link_to ":: Create a new user ::", new_admin_user_path %></h3>
 <hr>
 
 <%= paginate @users %>
-<% @users.each do |user| %>
-  <h2><%= link_to user.full_name, admin_user_path(user) %></h2>
-  <p>Email: <%= user.email %></p>
-  <p>Created at: <%= formatted_date(user.created_at) %> | Updated at: <%= formatted_date(user.updated_at) %></p>
-  <%= link_to "delete", admin_user_path(user), :method => "delete"%> | <%= link_to "edit", edit_admin_user_path(user)%>
-<% end %>
-
+  <% @users.each do |user| %>
+    <%= render 'show_user', user: user %>
+    <hr>
+  <% end %>
 <hr>

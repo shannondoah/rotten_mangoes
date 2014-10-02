@@ -1,0 +1,4 @@
+<h2><%= link_to user.full_name, admin_user_path(user) %></h2>
+  <p>Email: <%= user.email %></p>
+  <p>Created at: <%= formatted_date(user.created_at) %> | Updated at: <%= formatted_date(user.updated_at) %></p>
+  <%= link_to "delete", admin_user_path(user), :method => "delete"%> | <%= link_to "edit", edit_admin_user_path(user)%>

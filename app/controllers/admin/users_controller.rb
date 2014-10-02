@@ -45,10 +45,14 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path, notice: "This user has been deleted."
   end
 
+  # def impersonate(user)
+  #   session[:user_id] = user.id
+  # end
+
   protected
 
   def user_params
-    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
+    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, :admin)
   end
 
 end
