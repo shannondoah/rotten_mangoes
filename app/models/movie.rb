@@ -2,8 +2,7 @@ class Movie < ActiveRecord::Base
   
   has_many :reviews
 
-  scope :director, ->(name) { where("director like ?", "%#{name}%") }
-  scope :title, ->(name) {where("title like ?", "%#{name}%")}
+  scope :check, ->(params) { where("director like ? OR title like ?", ["%#{params}%"], ["%#{params}%"] ) }
 
   mount_uploader :poster, PosterUploader
 
@@ -46,7 +45,7 @@ class Movie < ActiveRecord::Base
 
   def self.search(search)
     if search
-      self.director(search[:director]).title(search[:title]).duration(search[:runtime_in_minutes].to_s)
+      self.check(search[:td]).duration(search[:runtime_in_minutes].to_s)
     else
       self.all
     end

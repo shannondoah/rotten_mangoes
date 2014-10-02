@@ -1,10 +1,8 @@
 <h2>Find a movie:</h2>
 
 <%= form_tag movies_path, :method => 'get' do %>
-  <%= label_tag(:title, "Title:") %>
-  <%= text_field_tag :title, params[:title] %>
-  <%= label_tag(:director, "Director:") %>
-  <%= text_field_tag :director, params[:director] %>
+  <%= label_tag(:td, "Title/Director:") %>
+  <%= text_field_tag :td, params[:td] %>
   <%= select_tag "runtime_in_minutes", options_for_select(["Under 90 Minutes","Between 90 and 120 Minutes","Over 120 Minutes"], params[:runtime_in_minutes]), {prompt: 'Select Duration'}  %>
   <%= submit_tag "Search", :name => nil %>
 <% end %>
