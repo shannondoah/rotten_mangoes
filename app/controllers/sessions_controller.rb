@@ -19,8 +19,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to movies_path, notice: "Adios!"
+    if mimicing?
+      session[:user_id] = session[:admin_id]
+      session[:admin_id] = nil
+      redirect_to :back, notice: "Admin again!"
+    else
+      session[:user_id] = nil
+      redirect_to movies_path, notice: "Adios!"
+    end
   end
 
 end

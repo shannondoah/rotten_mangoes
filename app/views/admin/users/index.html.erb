@@ -1,13 +1,16 @@
 <h1>All Users</h1> 
-<%= link_to "<< Back to all movies", movies_path %><br/>
 
 <hr>
   <h3><%= link_to ":: Create a new user ::", new_admin_user_path %></h3>
 <hr>
 
-<%= paginate @users %>
-  <% @users.each do |user| %>
-    <%= render 'show_user', user: user %>
-    <hr>
-  <% end %>
+<% @users.each_slice(3) do |users| %>
+  <div class="row" id="all_movies">
+    <% users.each do |user| %>
+      <%= render 'show_user', user: user %>
+    <% end %>
+  </div>
+  <hr>
+<% end %>
+<div class="pagination"><%= paginate @users %></div>
 <hr>

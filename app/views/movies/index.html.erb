@@ -1,6 +1,17 @@
-<h1><%= link_to "Rotten Mangoes", movies_path %></h1>
-<%= link_to "Submit a movie!", new_movie_path %>
-<%= render 'search' %>
-<hr>
-
-<%= render partial: "movie", collection: @movies %>
+<% @movies.each_slice(4) do |movies| %>
+  <div class="row" id="all_movies">
+    <% movies.each do |movie| %>
+      <% rating = movie.review_average * 10 if movie.review_average %>
+      <div class="col-md-3">
+        <%= link_to image_tag(movie.poster_url(:thumb), :class => 'thumbnail'), movie_path(movie) %>
+        <h2><%= link_to movie.title, movie_path(movie) %></h2>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="<%= movie.review_average %>" aria-valuemin="0" aria-valuemax="10" style="width: <%= rating %>%;">
+            <%= movie.review_average || 0 %>/10
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+<% end %>

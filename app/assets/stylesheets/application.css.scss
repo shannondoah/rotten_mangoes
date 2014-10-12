@@ -1,0 +1,249 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ 
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+/*BRAND VARIABLES*/
+
+$title-color: #f0b708;
+$light-title: #f6e19f;
+$rotten: #ee660a;
+$grey: #767267;
+$dark-grey: #38352d;
+
+$title-font: 'Slackey';
+$header-font: 'Squada One';
+
+
+/*LAYOUT RULES*/
+
+body {
+
+  height: 100%;
+  background-image: url(asset-path("lighter-pattern.jpg"));
+  color: #ffffff;
+
+  a {
+    color: $title-color;
+  }
+
+  a:hover {
+    color: $grey;
+  }
+
+  .btn:hover {
+    background-color: $light-title!important;
+  }
+
+  h1 {
+    font-family: $title-font;
+  }
+
+  h2, h3 {
+  font-family: $header-font;
+  }
+
+  h2 {
+
+    a {
+      font-size: 25px;
+      color: #ffffff;
+    }
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .review-separator {
+    border: 2px dashed $grey;
+  }
+
+}
+
+/*HEADER/FOOTER/BASE CONTENT RULES*/
+
+.jumbotron {
+
+  border-top-left-radius: 0!important;
+  border-top-right-radius: 0!important;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: $grey;
+  padding-top: 12px;
+
+  hr {
+    border-color: $dark-grey;
+  }
+
+  label{
+    font-family: $header-font;
+    font-size: 25px;
+    vertical-align: middle;
+  }
+  
+  input, button {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+
+}
+
+.jumbotron h1 {
+  font-family: $title-font;
+  font-size: 75px;
+
+  a {
+    text-decoration: none;
+    color: $title-color;
+  }
+}
+
+.logo {
+  width: 75px;
+}
+
+.content {
+  min-height: 100%;
+  // margin-bottom: 160px;
+}
+
+#footer {
+
+  padding: 20px 20px 80px 20px;
+  margin: 0px -10px 0px -10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: $grey;
+  clear: both;
+
+  #submitnew {
+    float: right;
+    font-family: $title-font;
+    background-color: $title-color;
+    border-color: $grey;
+
+  }
+
+  .login-panel {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+
+    a:hover {
+      color: $dark-grey;
+    }
+  }
+
+}
+
+/*Pagination currently only in use on admin/users page*/
+
+  .pagination a, .pagination span.current, .pagination span.gap {
+    float: left;
+    padding: 0 14px;
+    line-height: 38px;
+    text-decoration: none;
+    background-color: $grey;
+    border: 1px solid #DDD;
+    border-left-width: 0;
+  }
+   
+  .pagination {
+    
+    .first{
+      padding : 0;
+      float: none;
+      border: none;
+    }
+    .prev {
+      padding : 0;
+      float: none;
+      border: none;
+    }
+    .page{
+      padding : 0;
+      float: none;
+      border: none;
+    }
+    .next{
+      padding : 0;
+      float: none;
+      border: none;
+    }
+    .last{
+      padding : 0;
+      float: none;
+      border: none;
+    }
+  }
+
+
+
+/*MODULE RULES*/
+
+
+/* Movie Index */
+  .thumbnail {
+    max-width: 300px;
+    min-height: 300px;
+    margin: auto;
+
+  }
+
+  img:hover {
+    transform: scale(1.1);
+  }
+
+  .col-md-3 h2 {
+
+      text-align: center;
+
+  }
+
+  .progress-bar {
+    background-image: none;
+    background-color: $title-color;
+    font-weight: bold;
+    color: #000000;
+
+  }
+
+  .progress {
+    background-color: #000000;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+
+/* Movie View & Reviews */
+
+  .info-view {
+    padding-left: 20px;
+    vertical-align: text-top;
+  }
+
+  #rating {
+    font-weight: bold;
+    color: $rotten;
+  }
+
+  #userreview {
+    font-weight: bold;
+    color: $title-color;
+  }
+

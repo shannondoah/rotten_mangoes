@@ -5,12 +5,19 @@
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
+    <link href='http://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Squada+One' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value) %>
-    <% end %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value) %>
+      <% end %>
+      <%= render 'layouts/header' %>
+      <div class="content">
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

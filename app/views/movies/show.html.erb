@@ -1,13 +1,16 @@
-<%= link_to "Back to all movies", movies_path %><br/>
-
+<%= link_to "<< Back to all movies", movies_path %>
+<br>
+<br>
 <%= render "movie", movie: @movie %>
 
-<h3>Reviews of <em><%= @movie.title %></em></h3>
+<hr>
+
+<h2>Reviews of <em><%= @movie.title %></em>:</h2>
 <% if current_user %>
   <% @movie.reviews.each do |review| %>
+    <p id="userreview"><%= review.user.full_name %> gives it:  <span id="rating"><%= review.rating_out_of_ten %>/10</span></p>
     <p><%= review.text %></p>
-    <p><%= review.rating_out_of_ten %>/10</p>
-    <small>- <%= review.user.full_name %></small><br/>
+    <hr class="review-separator">
   <% end %>
   <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
 <% else %>

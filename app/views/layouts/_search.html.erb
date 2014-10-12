@@ -1,0 +1,6 @@
+<%= form_tag movies_path, :method => 'get', :class => 'form-inline' do %>
+  <%= label_tag(:td, "Find a movie: ") %>&nbsp;
+  <%= text_field_tag :td, params[:td], {:class => 'form-control', :placeholder => "Title/Director"} %>
+  <%= select_tag "runtime_in_minutes", options_for_select(["Under 90 Minutes","Between 90 and 120 Minutes","Over 120 Minutes"], params[:runtime_in_minutes]), {prompt: 'Select Duration', :class => 'form-control'} %>
+  <%= submit_tag "Search", :name => nil, :class => "btn btn-default" %>
+<% end %>

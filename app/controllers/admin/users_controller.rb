@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_filter :admin_only
 
   def index
-    @users = User.all.page(params[:page]).per(5)
+    @users = User.all.page(params[:page]).per(6)
   end
 
   def show
@@ -45,9 +45,14 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path, notice: "This user has been deleted."
   end
 
-  # def impersonate(user)
-  #   session[:user_id] = user.id
-  # end
+  # PUT /admin/users/:id/switch
+
+  def switch
+    @user = User.where(admin: [false,nil]).find(params[:id])
+    session[:admin_id] = current_user.id
+    session[:user_id] = @user.id
+    redirect_to movies_path, notice: "Now imitating user: #{@user.full_name}"
+  end
 
   protected
 
