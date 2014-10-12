@@ -31,9 +31,9 @@ $header-font: 'Squada One';
 
 /*LAYOUT RULES*/
 
+
 body {
 
-  height: 100%;
   background-image: url(asset-path("lighter-pattern.jpg"));
   color: #ffffff;
 
@@ -43,10 +43,6 @@ body {
 
   a:hover {
     color: $grey;
-  }
-
-  .btn:hover {
-    background-color: $light-title!important;
   }
 
   h1 {
@@ -77,12 +73,10 @@ body {
 
 /*HEADER/FOOTER/BASE CONTENT RULES*/
 
-.jumbotron {
+.jumbotron, #header {
 
-  border-top-left-radius: 0!important;
-  border-top-right-radius: 0!important;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   background-color: $grey;
   padding-top: 12px;
 
@@ -119,7 +113,6 @@ body {
 
 .content {
   min-height: 100%;
-  // margin-bottom: 160px;
 }
 
 #footer {
@@ -136,6 +129,10 @@ body {
     font-family: $title-font;
     background-color: $title-color;
     border-color: $grey;
+
+    &:hover {
+      background-color: $light-title;
+    }
 
   }
 
